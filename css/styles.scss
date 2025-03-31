@@ -1,0 +1,56 @@
+$gradient-color: #87badf;
+$white-color: #fff;
+$light-blue-color: #a9e1f933;
+
+$font-family: "Cormorant Garamond", sans-serif;
+$second-font-family: "Roboto", sans-serif;
+
+@mixin between-screen($min, $max) {
+  @media screen and (min-width: $min) and (max-width: $max) {
+    @content;
+  }
+}
+
+body {
+  font-family: $font-family;
+}
+
+.text-bg-info {
+  background-color: $white-color !important;
+  background: linear-gradient(to bottom, $gradient-color 80%, transparent 20%),
+    linear-gradient(to left, $light-blue-color 40%, transparent 60%);
+  @include between-screen(100px, 768px) {
+    background: linear-gradient(
+      to bottom,
+      $gradient-color 50%,
+      transparent 50%
+    );
+  }
+}
+
+.bg-body-secondary {
+  background-color: $white-color !important;
+  background: linear-gradient(to left, $light-blue-color 40%, transparent 60%);
+
+  @include between-screen(100px, 576px) {
+    background: linear-gradient(
+      to bottom,
+      transparent 20%,
+      $light-blue-color 80%
+    );
+  }
+}
+
+.img {
+  max-width: 300px;
+  min-height: 250px;
+}
+
+h1 + p,
+h4 + p,
+li,
+.role,
+.date,
+a {
+  font-family: $second-font-family;
+}
